@@ -8,6 +8,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * 作者：zzr
  * 创建日期：2018/8/21
@@ -15,6 +18,7 @@ import org.aspectj.lang.reflect.MethodSignature;
  */
 @Aspect
 public class StatisticsAspact {
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * 切点
@@ -35,7 +39,7 @@ public class StatisticsAspact {
         MethodSignature signature = (MethodSignature) point.getSignature();
         StatisticsTrace statisticsTrace = signature.getMethod().getAnnotation(StatisticsTrace.class);
         String contentValue = statisticsTrace.value();
-
+        Log.e("aop--->", "opreat1  :" + simpleDateFormat.format(new Date()));
         long begin = System.currentTimeMillis();
         //方法执行中
         Object o = null;
