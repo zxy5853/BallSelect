@@ -1,1 +1,1 @@
-include ':app', ':aoptest'
+include ':app', ':aoptest', ':singleinstancemode'
