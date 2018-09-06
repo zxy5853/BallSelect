@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$/aoptest" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildmode" />
+            <option value="$PROJECT_DIR$/commandmode" />
+            <option value="$PROJECT_DIR$/getphonestatusdemo" />
             <option value="$PROJECT_DIR$/singleinstancemode" />
           </set>
         </option>

@@ -1,1 +1,1 @@
-include ':app', ':aoptest', ':singleinstancemode', ':buildmode'
+include ':app', ':aoptest', ':singleinstancemode', ':buildmode', ':commandmode', ':getphonestatusdemo'
