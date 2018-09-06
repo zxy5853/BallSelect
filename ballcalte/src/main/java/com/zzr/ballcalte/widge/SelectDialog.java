@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zzr.ballcalte.R;
+import com.zzr.ballcalte.adapter.SelectAdapter;
+
+import java.util.List;
 
 /**
  * 作者：zzr
@@ -23,13 +26,16 @@ public class SelectDialog {
     private Context context;
     private Display display;
     private Dialog dialog;
+    private SelectAdapter adapter;
+    private List<Integer> list;
 
     private LinearLayout ll_dialog;
     private TextView tv_sure, tv_cancel;
     private RecyclerView recyclerView;
 
-    public SelectDialog(Context context) {
+    public SelectDialog(Context context, List<Integer> list) {
         this.context = context;
+        this.list = list;
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         display = windowManager.getDefaultDisplay();
     }
@@ -47,7 +53,17 @@ public class SelectDialog {
         ll_dialog.setLayoutParams(new FrameLayout.LayoutParams((int) (display.getWidth() * 0.8),
                 ViewGroup.LayoutParams.WRAP_CONTENT));
 
+        initAdapter();
+
         return this;
+    }
+
+    private void initAdapter() {
+        adapter = new SelectAdapter(R.layout.item_ball);
+
+        if (list != null)
+            adapter.setNewData(list);
+
     }
 
     public SelectDialog setOnCancelClickListener(final View.OnClickListener listener) {
