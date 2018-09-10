@@ -1,11 +1,16 @@
 package com.zzr.ballcalte.bean;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * 作者：zzr
  * 创建日期：2018/9/7
  * 描述：
  */
-public class BallsBean {
+public class BallsBean extends RealmObject {
+    @PrimaryKey
+    private String qihao;
     private int id;
     private int red1;
     private int red2;
@@ -14,6 +19,14 @@ public class BallsBean {
     private int red5;
     private int red6;
     private int blue;
+
+    public String getQihao() {
+        return qihao;
+    }
+
+    public void setQihao(String qihao) {
+        this.qihao = qihao;
+    }
 
     public int getId() {
         return id;

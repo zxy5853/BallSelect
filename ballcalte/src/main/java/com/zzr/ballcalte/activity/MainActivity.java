@@ -1,5 +1,6 @@
 package com.zzr.ballcalte.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.zzr.ballcalte.Constance;
 import com.zzr.ballcalte.R;
 import com.zzr.ballcalte.adapter.BallsAdapter;
@@ -16,8 +19,12 @@ import com.zzr.ballcalte.bean.BallBean;
 import com.zzr.ballcalte.bean.BallsBean;
 import com.zzr.ballcalte.utils.GetAllBallsUtils;
 import com.zzr.ballcalte.utils.NewBeeToastUtils;
+import com.zzr.ballcalte.utils.PrefUtils;
+import com.zzr.ballcalte.utils.ReadJsonUtils;
+import com.zzr.ballcalte.utils.RealmHelper;
 import com.zzr.ballcalte.widge.SelectDialog;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
         initData();
         initAdapter();
+
+        if (PrefUtils.getBoolean("isNotFirstUse", false)) {
+            initDataFirstTime();
+        }
     }
 
     private void initData() {
@@ -103,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String danNum = "";
                 if (dialog.getType() == 0) {
+                    if (selectDans.size() > 0)
+                        selectDans.clear();
                     for (BallBean ballBean : dialog.getList()) {
                         if (ballBean.isSelect()) {
                             selectDans.add(ballBean);
@@ -115,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     dialog.dismiss();
                 } else if (dialog.getType() == 1) {
+                    if (selectTuos.size() > 0)
+                        selectTuos.clear();
                     for (BallBean ballBean : dialog.getList()) {
                         if (ballBean.isSelect()) {
                             selectTuos.add(ballBean);
@@ -125,13 +140,15 @@ public class MainActivity extends AppCompatActivity {
                         danNum = danNum.substring(0, danNum.length() - 1);
                         tvTuoSelect.setText(danNum);
                     }
-                    if (selectTuos.size() < 3) {
-                        NewBeeToastUtils.showToastLong(MainActivity.this, "请选择三个以上的红球作为拖码！");
+                    if (selectTuos.size() < (6 - selectDans.size())) {
+                        NewBeeToastUtils.showToastLong(MainActivity.this, "请选择" + (6 - selectDans.size()) + "个以上的红球作为拖码！");
                         return;
                     } else {
                         dialog.dismiss();
                     }
                 } else if (dialog.getType() == 2) {
+                    if (selectBlues.size() > 0)
+                        selectBlues.clear();
                     for (BallBean ballBean : dialog.getList()) {
                         if (ballBean.isSelect()) {
                             selectBlues.add(ballBean);
@@ -203,5 +220,32 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAllNum(View view) {
         adapter.setNewData(ballsBeanList);
+    }
+
+    public void findHistoryNum(View view) {
+        startActivity(new Intent(this, HistoryNumActivity.class));
+    }
+
+    private void writeDataToDB() {
+        Gson gson = new Gson();
+        String jsonStr = ReadJsonUtils.read(this, "data.json");
+        Type type = new TypeToken<List<BallsBean>>() {
+        }.getType();
+        List<BallsBean> list = gson.fromJson(jsonStr, type);
+
+        RealmHelper<BallsBean> helper = new RealmHelper<>();
+        for (BallsBean ballsBean : list) {
+            helper.copyObj2Realm(ballsBean);
+        }
+    }
+
+    private void initDataFirstTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                writeDataToDB();
+                PrefUtils.putBoolean("isNotFirstUse", true);
+            }
+        }).run();
     }
 }

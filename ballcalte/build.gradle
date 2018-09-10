@@ -1,7 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.zzr.ballcalte"
         minSdkVersion 19
@@ -18,7 +19,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     buildToolsVersion '26.0.2'
+    realm {
+        syncEnabled = true
+    }
 }
 
 dependencies {
@@ -32,4 +37,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     compile 'com.android.support:design:27.0.2'
+    compile 'com.google.code.gson:gson:2.8.2'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
 }
