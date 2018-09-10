@@ -23,7 +23,7 @@ public class BallsAdapter extends BaseQuickAdapter<BallsBean, BaseViewHolder> {
         helper.setText(R.id.tv_red4, String.valueOf(item.getRed4()));
         helper.setText(R.id.tv_red5, String.valueOf(item.getRed5()));
         helper.setText(R.id.tv_red6, String.valueOf(item.getRed6()));
-        helper.setText(R.id.tv_blue, String.valueOf(item.getRed6()));
+        helper.setText(R.id.tv_blue, String.valueOf(item.getBlue()));
     }
 
 }

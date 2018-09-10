@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zzr.ballcalte.Constance;
@@ -13,6 +14,7 @@ import com.zzr.ballcalte.R;
 import com.zzr.ballcalte.adapter.BallsAdapter;
 import com.zzr.ballcalte.bean.BallBean;
 import com.zzr.ballcalte.bean.BallsBean;
+import com.zzr.ballcalte.utils.GetAllBallsUtils;
 import com.zzr.ballcalte.utils.NewBeeToastUtils;
 import com.zzr.ballcalte.widge.SelectDialog;
 
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvTotalNum;
     @BindView(R.id.recycleView)
     RecyclerView recycleView;
+    @BindView(R.id.ll_showNums)
+    LinearLayout llShowNums;
 
     private List<BallBean> selectDans = new ArrayList<>();
     private List<BallBean> selectTuos = new ArrayList<>();
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
     private SelectDialog dialog;
     private BallsAdapter adapter;
+
+    private List<BallsBean> ballsBeanList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,33 +195,13 @@ public class MainActivity extends AppCompatActivity {
         int danNum = selectDans.size();
         int tuoNum = selectTuos.size();
         int blueNum = selectBlues.size();
-        int totalNum = getTotalNum(danNum, tuoNum, blueNum);
-        tvTotalNum.setText("本次共选择" + totalNum + "注");
+        int totalNum = GetAllBallsUtils.GetInstance().getTotalNum(danNum, tuoNum, blueNum);
+        tvTotalNum.setText("本次共选择" + totalNum + "注,共需要" + totalNum * 2 + "元");
+        ballsBeanList = GetAllBallsUtils.GetInstance().getAllBalls(selectDans, selectTuos, selectBlues);
+        llShowNums.setVisibility(View.VISIBLE);
     }
 
-    private int getTotalNum(int danNum, int tuoNum, int blueNum) {
-        int totalNum = 0;
-        int needTuoNum = 6 - danNum;                //需要拖码的个数
-        int needProduct = tuoNum - needTuoNum;  //需要乘积的次数
-        int temp = 1;
-
-        for (int i = 0; i < needProduct; i++) {
-            temp = temp * tuoNum;
-            tuoNum--;
-        }
-        totalNum = temp * blueNum;
-        return totalNum;
-    }
-
-    private void getBalls() {
-        int danNum = selectDans.size();
-        int tuoNum = selectTuos.size();
-        int blueNum = selectBlues.size();
-        List<BallsBean> list = new ArrayList<>();
-        BallsBean ballsBean = new BallsBean();
-
-        for (BallBean selectDan : selectDans) {
-
-        }
+    public void showAllNum(View view) {
+        adapter.setNewData(ballsBeanList);
     }
 }

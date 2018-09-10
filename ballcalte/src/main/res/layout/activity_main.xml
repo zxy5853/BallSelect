@@ -78,25 +78,42 @@
         </LinearLayout>
 
         <Button
-            android:onClick="getNumbs"
-            android:text="计算投注号码"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp" />
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="20dp"
+            android:onClick="getNumbs"
+            android:text="计算投注号码" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/tv_totalNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:textSize="15sp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleView"
+        <LinearLayout
+            android:id="@+id/ll_showNums"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="20dp"
+                android:onClick="showAllNum"
+                android:text="展示所有的组合" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
