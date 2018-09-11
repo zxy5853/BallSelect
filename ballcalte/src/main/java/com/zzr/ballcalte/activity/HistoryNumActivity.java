@@ -40,7 +40,7 @@ public class HistoryNumActivity extends Activity {
     private int pageNum = 1;
     private List<BallsBean> list = new ArrayList<>();
 
-    private RealmHelper<BallsBean> realmHelper;
+//    private RealmHelper<BallsBean> realmHelper;
 
     private Handler handler = new Handler() {
         @Override
@@ -56,38 +56,44 @@ public class HistoryNumActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
-        realmHelper = new RealmHelper<BallsBean>();
+//        realmHelper = new RealmHelper<BallsBean>();
         initAdapter();
-
+        initRefresh();
         getData();
     }
 
     private void getData() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (realmHelper.findByPage(BallsBean.class, pageNum, null) != null)
-                    list.addAll(realmHelper.findByPage(BallsBean.class, pageNum, null));
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (RealmHelper.getInstance().findByPage(BallsBean.class, pageNum, null) != null)
+//                    list.addAll(RealmHelper.getInstance().findByPage(BallsBean.class, pageNum, null));
 
-                Message message = new Message();
-                message.what = 1;
-                handler.sendMessage(message);
 
-                if (refresh != null) {
-                    if (pageNum > 1)
-                        refresh.finishLoadMore();
-                    else
-                        refresh.finishRefresh();
-                }
-            }
-        }).start();
+        if (RealmHelper.getInstance().findAll(BallsBean.class) != null)
+            list.addAll(RealmHelper.getInstance().findAll(BallsBean.class));
+        Message message = new Message();
+        message.what = 1;
+        handler.sendMessage(message);
+
+        if (refresh != null) {
+            if (pageNum > 1)
+                refresh.finishLoadMore();
+            else
+                refresh.finishRefresh();
+        }
+//            }
+//        }).start();
     }
 
     private void initRefresh() {
         refresh.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                pageNum++;
+//                pageNum++;
+                pageNum = 1;
+                if (list.size() > 0)
+                    list.clear();
                 getData();
             }
 
@@ -115,7 +121,6 @@ public class HistoryNumActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        realmHelper.close();
         handler.removeMessages(1);
     }
 }

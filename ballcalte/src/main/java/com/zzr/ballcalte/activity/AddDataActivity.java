@@ -38,7 +38,7 @@ public class AddDataActivity extends Activity {
     @BindView(R.id.et_blue)
     EditText etBlue;
 
-    private RealmHelper<BallsBean> realmHelper;
+//    private RealmHelper realmHelper;
     private BallsBean ballsBean;
 
     @Override
@@ -47,7 +47,7 @@ public class AddDataActivity extends Activity {
         setContentView(R.layout.activity_add);
         ButterKnife.bind(this);
 
-        realmHelper = new RealmHelper<>();
+//        realmHelper = new RealmHelper<>();
     }
 
     public void addNum(View view) {
@@ -60,7 +60,7 @@ public class AddDataActivity extends Activity {
         ballsBean.setRed5(Integer.valueOf(etRed5.getText().toString()));
         ballsBean.setRed6(Integer.valueOf(etRed6.getText().toString()));
         ballsBean.setQihao(etQihao.getText().toString());
-        realmHelper.copyObj2Realm(ballsBean);
+        RealmHelper.getInstance().copyObj2Realm(ballsBean);
 
         NewBeeToastUtils.showToastLong(this, "添加成功！");
         etRed1.getText().clear();

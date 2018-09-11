@@ -1,10 +1,11 @@
 package com.zzr.ballcalte.utils;
 
+import com.zzr.ballcalte.bean.BallsBean;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import io.realm.Realm;
-import io.realm.RealmObject;
 import io.realm.RealmResults;
 
 /**
@@ -12,19 +13,19 @@ import io.realm.RealmResults;
  * 创建日期：2018/9/10
  * 描述：
  */
-public class RealmHelper<T extends RealmObject> {
-//    private RealmHelper instance;
+public class RealmHelper/*<T extends RealmObject>*/ {
+    private static RealmHelper instance;
     private Realm realm;
 
-//    public RealmHelper getInstance() {
-//        if (instance == null) {
-//            synchronized (RealmHelper.class) {
-//                if (instance == null)
-//                    instance = new RealmHelper();
-//            }
-//        }
-//        return instance;
-//    }
+    public static RealmHelper getInstance() {
+        if (instance == null) {
+            synchronized (RealmHelper.class) {
+                if (instance == null)
+                    instance = new RealmHelper();
+            }
+        }
+        return instance;
+    }
 
     public RealmHelper() {
         initRealm();
@@ -41,7 +42,7 @@ public class RealmHelper<T extends RealmObject> {
 
     }
 
-    public void copyObj2Realm(T t) {
+    public void copyObj2Realm(BallsBean t) {
         realm.beginTransaction();
         realm.copyToRealm(t);
         realm.commitTransaction();
@@ -50,8 +51,8 @@ public class RealmHelper<T extends RealmObject> {
     /**
      * 查
      */
-    public List<T> findAll(Class clazz) {
-        RealmResults<T> userList = realm.where(clazz).findAll();
+    public List<BallsBean> findAll(Class clazz) {
+        RealmResults<BallsBean> userList = realm.where(clazz).findAll();
         return userList;
     }
 
@@ -61,9 +62,9 @@ public class RealmHelper<T extends RealmObject> {
      * @param pageNum
      * @return
      */
-    public List<T> findByPage(Class clazz, int pageNum, Integer dataNum) {
-        List<T> allData = findAll(clazz);
-        List<T> resultList = new ArrayList<>();
+    public List<BallsBean> findByPage(Class clazz, int pageNum, Integer dataNum) {
+        List<BallsBean> allData = findAll(clazz);
+        List<BallsBean> resultList = new ArrayList<>();
         if (resultList.size() > 0) resultList.clear();
 
         int everyNum = 10;
@@ -90,8 +91,8 @@ public class RealmHelper<T extends RealmObject> {
         return resultList;
     }
 
-    public List<T> findByKey(Class clazz, String key, String value) {
-        RealmResults<T> userList = realm.where(clazz).equalTo(key, value).findAll();
+    public List<BallsBean> findByKey(Class clazz, String key, String value) {
+        RealmResults<BallsBean> userList = realm.where(clazz).equalTo(key, value).findAll();
         return userList;
     }
 

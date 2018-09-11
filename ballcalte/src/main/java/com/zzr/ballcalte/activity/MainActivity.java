@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         initData();
         initAdapter();
 
-        if (PrefUtils.getBoolean("isNotFirstUse", false)) {
-            initDataFirstTime();
+        if (!PrefUtils.getBoolean("isNotFirstUse", false)) {
+            writeDataToDB();
         }
     }
 
@@ -233,10 +233,11 @@ public class MainActivity extends AppCompatActivity {
         }.getType();
         List<BallsBean> list = gson.fromJson(jsonStr, type);
 
-        RealmHelper<BallsBean> helper = new RealmHelper<>();
+//        RealmHelper<BallsBean> helper = new RealmHelper<>();
         for (BallsBean ballsBean : list) {
-            helper.copyObj2Realm(ballsBean);
+            RealmHelper.getInstance().copyObj2Realm(ballsBean);
         }
+        PrefUtils.putBoolean("isNotFirstUse", true);
     }
 
     private void initDataFirstTime() {
@@ -248,4 +249,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }).run();
     }
+
 }
