@@ -18,7 +18,13 @@ public class HistoryDataAdapter extends BaseQuickAdapter<BallsBean, BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder helper, BallsBean item) {
-        helper.setText(R.id.tv_qihao, "第" + item.getQihao() + "期");
+        if (item.getQihao() >= 100)
+            helper.setText(R.id.tv_qihao, "第2018" + item.getQihao() + "期");
+        else if (item.getQihao() < 100 && item.getQihao() >= 10)
+            helper.setText(R.id.tv_qihao, "第20180" + item.getQihao() + "期");
+        else if (item.getQihao() < 10)
+            helper.setText(R.id.tv_qihao, "第201800" + item.getQihao() + "期");
+
         helper.setText(R.id.tv_red1, String.valueOf(item.getRed1()));
         helper.setText(R.id.tv_red2, String.valueOf(item.getRed2()));
         helper.setText(R.id.tv_red3, String.valueOf(item.getRed3()));

@@ -33,15 +33,17 @@ public class SelectDialog {
     private SelectAdapter adapter;
     private List<BallBean> list;
     private int type;   //0:胆码 1:拖码 2:篮球
+    private boolean isDoubleModle;//是否复式
 
     private LinearLayout ll_dialog;
     private TextView tv_sure, tv_cancel;
     private RecyclerView recyclerView;
 
-    public SelectDialog(Context context, List<BallBean> list, int type) {
+    public SelectDialog(Context context, List<BallBean> list, int type, boolean isDoubleModle) {
         this.context = context;
         this.list = list;
         this.type = type;
+        this.isDoubleModle = isDoubleModle;
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         display = windowManager.getDefaultDisplay();
     }
@@ -103,21 +105,23 @@ public class SelectDialog {
                         }
                     }
 
-                    switch (type) {
-                        case 0:
-                            if (num >= 5) {
-                                NewBeeToastUtils.showToastLong(context, "胆码不能超过五个！");
-                                return;
-                            }
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            if (num >= 3) {
-                                NewBeeToastUtils.showToastLong(context, "篮球不能超过3个！");
-                                return;
-                            }
-                            break;
+                    if (!isDoubleModle) {
+                        switch (type) {
+                            case 0:
+                                if (num >= 5) {
+                                    NewBeeToastUtils.showToastLong(context, "胆码不能超过五个！");
+                                    return;
+                                }
+                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                if (num >= 3) {
+                                    NewBeeToastUtils.showToastLong(context, "篮球不能超过3个！");
+                                    return;
+                                }
+                                break;
+                        }
                     }
 
                     ballBean.setSelect(true);

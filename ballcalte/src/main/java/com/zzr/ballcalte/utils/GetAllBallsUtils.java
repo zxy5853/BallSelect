@@ -54,7 +54,7 @@ public class GetAllBallsUtils {
             for (int j = 0; j < c.length; j++) {
                 //创建一个数组先放入胆码
                 int[] balls = new int[6];
-//                    balls[6] = 100;//放入一个较大的数占据篮球位置，放置排序时乱序
+
                 //放入胆码
                 if (danNum == 1) {
                     balls[0] = dans[0];
@@ -65,6 +65,17 @@ public class GetAllBallsUtils {
                     balls[0] = dans[0];
                     balls[1] = dans[1];
                     balls[2] = dans[2];
+                } else if (danNum == 4) {
+                    balls[0] = dans[0];
+                    balls[1] = dans[1];
+                    balls[2] = dans[2];
+                    balls[3] = dans[3];
+                } else if (danNum == 5) {
+                    balls[0] = dans[0];
+                    balls[1] = dans[1];
+                    balls[2] = dans[2];
+                    balls[3] = dans[3];
+                    balls[4] = dans[4];
                 }
 
                 Integer[] objects = c[j];
@@ -87,7 +98,65 @@ public class GetAllBallsUtils {
                         balls[4] = objects[1];
                         balls[5] = objects[2];
                         break;
+                    case 4:
+                        balls[4] = objects[0];
+                        balls[5] = objects[1];
+                        break;
+                    case 5:
+                        balls[5] = objects[0];
+                        break;
                 }
+                Arrays.sort(balls);
+//                    balls[6] = blues[i];
+                for (int blue : blues) {
+                    BallsBean ballsBean = creatBallsBean(balls);
+                    ballsBean.setBlue(blue);
+                    list.add(ballsBean);
+                }
+//                list.add(creatBallsBean(balls));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    public List<BallsBean> getAllBalls(List<BallBean> redList, List<BallBean> blueList) {
+        int redNum = redList.size();
+        int blueNum = blueList.size();
+
+        int needTuoNum = 6;                //需要红球的个数
+
+        Integer[] dans = new Integer[redNum];
+        int[] blues = new int[blueNum];
+
+        for (int i = 0; i < redList.size(); i++) {
+            dans[i] = redList.get(i).getNum();
+        }
+
+        for (int i = 0; i < blueList.size(); i++) {
+            blues[i] = blueList.get(i).getNum();
+        }
+
+        List<BallsBean> list = new ArrayList<>();
+
+        //计算拖码
+        try {
+            CombineAlgorithm ca = new CombineAlgorithm(dans, needTuoNum);
+            Integer[][] c = ca.getResutl();
+            for (int j = 0; j < c.length; j++) {
+                //创建一个数组先放入胆码
+                int[] balls = new int[6];
+
+                Integer[] objects = c[j];
+                balls[0] = objects[0];
+                balls[1] = objects[1];
+                balls[2] = objects[2];
+                balls[3] = objects[3];
+                balls[4] = objects[4];
+                balls[5] = objects[5];
+
                 Arrays.sort(balls);
 //                    balls[6] = blues[i];
                 for (int blue : blues) {

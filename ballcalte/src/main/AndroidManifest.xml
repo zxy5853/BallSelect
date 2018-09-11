@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".activity.HistoryNumActivity" />
         <activity android:name=".activity.AddDataActivity" />
+        <activity android:name=".activity.ResultActivity" />
+        <activity android:name=".activity.DoubleMoudleActivity" />
     </application>
 
 </manifest>

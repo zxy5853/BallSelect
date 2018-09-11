@@ -8,7 +8,7 @@ import io.realm.RealmObject;
  * 描述：
  */
 public class BallsBean extends RealmObject {
-    private String qihao;
+    private int qihao;
     private int id;
     private int red1;
     private int red2;
@@ -18,11 +18,11 @@ public class BallsBean extends RealmObject {
     private int red6;
     private int blue;
 
-    public String getQihao() {
+    public int getQihao() {
         return qihao;
     }
 
-    public void setQihao(String qihao) {
+    public void setQihao(int qihao) {
         this.qihao = qihao;
     }
 

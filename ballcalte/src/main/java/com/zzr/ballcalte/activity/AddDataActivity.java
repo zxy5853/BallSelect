@@ -3,6 +3,7 @@ package com.zzr.ballcalte.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -38,7 +39,6 @@ public class AddDataActivity extends Activity {
     @BindView(R.id.et_blue)
     EditText etBlue;
 
-//    private RealmHelper realmHelper;
     private BallsBean ballsBean;
 
     @Override
@@ -47,10 +47,25 @@ public class AddDataActivity extends Activity {
         setContentView(R.layout.activity_add);
         ButterKnife.bind(this);
 
-//        realmHelper = new RealmHelper<>();
     }
 
     public void addNum(View view) {
+        String qihao = etQihao.getText().toString();
+        String blue = etBlue.getText().toString();
+        String red1 = etRed1.getText().toString();
+        String red2 = etRed2.getText().toString();
+        String red3 = etRed3.getText().toString();
+        String red4 = etRed4.getText().toString();
+        String red5 = etRed5.getText().toString();
+        String red6 = etRed6.getText().toString();
+
+        if (TextUtils.isEmpty(qihao) || TextUtils.isEmpty(blue) || TextUtils.isEmpty(red1)
+                || TextUtils.isEmpty(red2) || TextUtils.isEmpty(red3) || TextUtils.isEmpty(red4)
+                || TextUtils.isEmpty(red5) || TextUtils.isEmpty(red6)) {
+            NewBeeToastUtils.showToastLong(this, "请完善信息，再提交！");
+            return;
+        }
+
         ballsBean = new BallsBean();
         ballsBean.setBlue(Integer.valueOf(etBlue.getText().toString()));
         ballsBean.setRed1(Integer.valueOf(etRed1.getText().toString()));
@@ -59,7 +74,7 @@ public class AddDataActivity extends Activity {
         ballsBean.setRed4(Integer.valueOf(etRed4.getText().toString()));
         ballsBean.setRed5(Integer.valueOf(etRed5.getText().toString()));
         ballsBean.setRed6(Integer.valueOf(etRed6.getText().toString()));
-        ballsBean.setQihao(etQihao.getText().toString());
+        ballsBean.setQihao(Integer.valueOf(etQihao.getText().toString()));
         RealmHelper.getInstance().copyObj2Realm(ballsBean);
 
         NewBeeToastUtils.showToastLong(this, "添加成功！");
