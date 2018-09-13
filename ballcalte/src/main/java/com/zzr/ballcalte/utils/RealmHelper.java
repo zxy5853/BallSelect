@@ -44,7 +44,7 @@ public class RealmHelper/*<T extends RealmObject>*/ {
 
     public void copyObj2Realm(BallsBean t) {
         realm.beginTransaction();
-        realm.copyToRealm(t);
+        realm.copyToRealmOrUpdate(t);
         realm.commitTransaction();
     }
 
@@ -94,6 +94,17 @@ public class RealmHelper/*<T extends RealmObject>*/ {
     public List<BallsBean> findByKey(Class clazz, String key, String value) {
         RealmResults<BallsBean> userList = realm.where(clazz).equalTo(key, value).findAll();
         return userList;
+    }
+
+
+    public void delAll(Class clazz) {
+        final RealmResults<BallsBean> userList = realm.where(clazz).findAll();
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                userList.deleteAllFromRealm();
+            }
+        });
     }
 
     /**

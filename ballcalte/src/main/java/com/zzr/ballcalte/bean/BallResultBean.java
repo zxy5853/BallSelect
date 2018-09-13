@@ -15,10 +15,16 @@ public class BallResultBean implements Parcelable, MultiItemEntity {
     private int itemType;
 
     private int qihao;
-    private int redHe;
-    private int allHe;
-    private int allPingJun;
-    private int redPingJun;
+    private int one;
+    private int two;
+    private int three;
+    private int four;
+    private int five;
+    private int six;
+    private int seven;
+    private int eight;
+    private int nine;
+    private int ten;
     private int red1;
     private int red2;
     private int red3;
@@ -27,13 +33,21 @@ public class BallResultBean implements Parcelable, MultiItemEntity {
     private int red6;
     private int blue;
 
+    public BallResultBean(){}
+
     protected BallResultBean(Parcel in) {
         itemType = in.readInt();
         qihao = in.readInt();
-        redHe = in.readInt();
-        allHe = in.readInt();
-        allPingJun = in.readInt();
-        redPingJun = in.readInt();
+        one = in.readInt();
+        two = in.readInt();
+        three = in.readInt();
+        four = in.readInt();
+        five = in.readInt();
+        six = in.readInt();
+        seven = in.readInt();
+        eight = in.readInt();
+        nine = in.readInt();
+        ten = in.readInt();
         red1 = in.readInt();
         red2 = in.readInt();
         red3 = in.readInt();
@@ -54,6 +68,87 @@ public class BallResultBean implements Parcelable, MultiItemEntity {
             return new BallResultBean[size];
         }
     };
+
+    public int getOne() {
+        return one;
+    }
+
+    public void setOne(int one) {
+        this.one = one;
+    }
+
+    public int getTwo() {
+        return two;
+    }
+
+    public void setTwo(int two) {
+        this.two = two;
+    }
+
+    public int getThree() {
+        return three;
+    }
+
+    public void setThree(int three) {
+        this.three = three;
+    }
+
+    public int getFour() {
+        return four;
+    }
+
+    public void setFour(int four) {
+        this.four = four;
+    }
+
+    public int getFive() {
+        return five;
+    }
+
+    public void setFive(int five) {
+        this.five = five;
+    }
+
+    public int getSix() {
+        return six;
+    }
+
+    public void setSix(int six) {
+        this.six = six;
+    }
+
+    public int getSeven() {
+        return seven;
+    }
+
+    public void setSeven(int seven) {
+        this.seven = seven;
+    }
+
+    public int getEight() {
+        return eight;
+    }
+
+    public void setEight(int eight) {
+        this.eight = eight;
+    }
+
+    public int getNine() {
+        return nine;
+    }
+
+    public void setNine(int nine) {
+        this.nine = nine;
+    }
+
+    public int getTen() {
+        return ten;
+    }
+
+    public void setTen(int ten) {
+        this.ten = ten;
+    }
+
 
     public void setItemType(int itemType) {
         this.itemType = itemType;
@@ -115,47 +210,12 @@ public class BallResultBean implements Parcelable, MultiItemEntity {
         this.blue = blue;
     }
 
-    public BallResultBean() {
-    }
-
     public int getQihao() {
         return qihao;
     }
 
     public void setQihao(int qihao) {
         this.qihao = qihao;
-    }
-
-    public int getRedHe() {
-        return redHe;
-    }
-
-    public void setRedHe(int redHe) {
-        this.redHe = redHe;
-    }
-
-    public int getAllHe() {
-        return allHe;
-    }
-
-    public void setAllHe(int allHe) {
-        this.allHe = allHe;
-    }
-
-    public int getAllPingJun() {
-        return allPingJun;
-    }
-
-    public void setAllPingJun(int allPingJun) {
-        this.allPingJun = allPingJun;
-    }
-
-    public int getRedPingJun() {
-        return redPingJun;
-    }
-
-    public void setRedPingJun(int redPingJun) {
-        this.redPingJun = redPingJun;
     }
 
     @Override
@@ -172,10 +232,16 @@ public class BallResultBean implements Parcelable, MultiItemEntity {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(itemType);
         dest.writeInt(qihao);
-        dest.writeInt(redHe);
-        dest.writeInt(allHe);
-        dest.writeInt(allPingJun);
-        dest.writeInt(redPingJun);
+        dest.writeInt(one);
+        dest.writeInt(two);
+        dest.writeInt(three);
+        dest.writeInt(four);
+        dest.writeInt(five);
+        dest.writeInt(six);
+        dest.writeInt(seven);
+        dest.writeInt(eight);
+        dest.writeInt(nine);
+        dest.writeInt(ten);
         dest.writeInt(red1);
         dest.writeInt(red2);
         dest.writeInt(red3);

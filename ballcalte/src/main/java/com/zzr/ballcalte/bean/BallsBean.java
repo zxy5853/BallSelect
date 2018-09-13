@@ -1,6 +1,7 @@
 package com.zzr.ballcalte.bean;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * 作者：zzr
@@ -8,6 +9,7 @@ import io.realm.RealmObject;
  * 描述：
  */
 public class BallsBean extends RealmObject {
+    @PrimaryKey
     private int qihao;
     private int id;
     private int red1;

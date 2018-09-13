@@ -1,132 +1,112 @@
 [
   {
-    "qihao": 105,
-    "red1": 4,
-    "red2": 5,
-    "red3": 13,
-    "red4": 18,
-    "red5": 19,
-    "red6": 25,
-    "blue": 1
-  },
-  {
-    "qihao": 104,
-    "red1": 2,
-    "red2": 3,
-    "red3": 6,
-    "red4": 19,
-    "red5": 25,
-    "red6": 29,
-    "blue": 1
-  },
-  {
-    "qihao": 103,
-    "red1": 2,
-    "red2": 9,
-    "red3": 15,
-    "red4": 22,
-    "red5": 23,
-    "red6": 24,
-    "blue": 16
-  },
-  {
-    "qihao": 102,
-    "red1": 2,
-    "red2": 6,
-    "red3": 11,
-    "red4": 19,
-    "red5": 21,
-    "red6": 28,
-    "blue": 5
-  },
-  {
-    "qihao": 101,
+    "qihao": 81,
     "red1": 1,
-    "red2": 3,
+    "red2": 2,
+    "red3": 12,
+    "red4": 16,
+    "red5": 20,
+    "red6": 26,
+    "blue": 3
+  },
+  {
+    "qihao": 82,
+    "red1": 6,
+    "red2": 12,
     "red3": 14,
-    "red4": 26,
-    "red5": 29,
-    "red6": 33,
+    "red4": 20,
+    "red5": 22,
+    "red6": 24,
     "blue": 9
   },
   {
-    "qihao": 100,
-    "red1": 2,
-    "red2": 11,
-    "red3": 14,
-    "red4": 15,
-    "red5": 29,
+    "qihao": 83,
+    "red1": 4,
+    "red2": 9,
+    "red3": 18,
+    "red4": 21,
+    "red5": 32,
     "red6": 33,
-    "blue": 2
+    "blue": 3
   },
   {
-    "qihao": 99,
-    "red1": 3,
-    "red2": 7,
+    "qihao": 84,
+    "red1": 5,
+    "red2": 6,
     "red3": 8,
-    "red4": 14,
-    "red5": 25,
-    "red6": 32,
+    "red4": 12,
+    "red5": 22,
+    "red6": 24,
+    "blue": 3
+  },
+  {
+    "qihao": 85,
+    "red1": 4,
+    "red2": 10,
+    "red3": 25,
+    "red4": 26,
+    "red5": 30,
+    "red6": 33,
     "blue": 6
   },
   {
-    "qihao": 98,
-    "red1": 6,
-    "red2": 10,
-    "red3": 11,
-    "red4": 20,
-    "red5": 29,
-    "red6": 32,
-    "blue": 13
-  },
-  {
-    "qihao": 97,
-    "red1": 1,
-    "red2": 2,
+    "qihao": 86,
+    "red1": 2,
+    "red2": 7,
     "red3": 17,
-    "red4": 20,
-    "red5": 25,
-    "red6": 28,
-    "blue": 13
+    "red4": 21,
+    "red5": 23,
+    "red6": 26,
+    "blue": 16
   },
   {
-    "qihao": 96,
+    "qihao": 87,
     "red1": 1,
     "red2": 5,
-    "red3": 9,
-    "red4": 20,
-    "red5": 28,
-    "red6": 32,
-    "blue": 12
+    "red3": 10,
+    "red4": 16,
+    "red5": 18,
+    "red6": 31,
+    "blue": 3
   },
   {
-    "qihao": 95,
-    "red1": 10,
-    "red2": 11,
+    "qihao": 88,
+    "red1": 3,
+    "red2": 5,
     "red3": 12,
-    "red4": 21,
-    "red5": 26,
-    "red6": 33,
-    "blue": 9
+    "red4": 29,
+    "red5": 30,
+    "red6": 32,
+    "blue": 14
   },
   {
-    "qihao": 94,
-    "red1": 4,
-    "red2": 7,
-    "red3": 16,
-    "red4": 20,
-    "red5": 24,
-    "red6": 30,
-    "blue": 5
+    "qihao": 89,
+    "red1": 6,
+    "red2": 9,
+    "red3": 12,
+    "red4": 14,
+    "red5": 18,
+    "red6": 27,
+    "blue": 14
   },
   {
-    "qihao": 93,
-    "red1": 4,
-    "red2": 18,
-    "red3": 20,
-    "red4": 21,
-    "red5": 29,
-    "red6": 33,
+    "qihao": 90,
+    "red1": 1,
+    "red2": 2,
+    "red3": 3,
+    "red4": 10,
+    "red5": 14,
+    "red6": 23,
+    "blue": 7
+  },
+  {
+    "qihao": 91,
+    "red1": 6,
+    "red2": 11,
+    "red3": 13,
+    "red4": 17,
+    "red5": 25,
+    "red6": 32,
     "blue": 7
   },
   {
@@ -140,13 +120,143 @@
     "blue": 16
   },
   {
-    "qihao": 91,
-    "red1": 6,
+    "qihao": 93,
+    "red1": 4,
+    "red2": 18,
+    "red3": 20,
+    "red4": 21,
+    "red5": 29,
+    "red6": 33,
+    "blue": 7
+  },
+  {
+    "qihao": 94,
+    "red1": 4,
+    "red2": 7,
+    "red3": 16,
+    "red4": 20,
+    "red5": 24,
+    "red6": 30,
+    "blue": 5
+  },
+  {
+    "qihao": 95,
+    "red1": 10,
     "red2": 11,
-    "red3": 13,
-    "red4": 17,
+    "red3": 12,
+    "red4": 21,
+    "red5": 26,
+    "red6": 33,
+    "blue": 9
+  },
+  {
+    "qihao": 96,
+    "red1": 1,
+    "red2": 5,
+    "red3": 9,
+    "red4": 20,
+    "red5": 28,
+    "red6": 32,
+    "blue": 12
+  },
+  {
+    "qihao": 97,
+    "red1": 1,
+    "red2": 2,
+    "red3": 17,
+    "red4": 20,
+    "red5": 25,
+    "red6": 28,
+    "blue": 13
+  },
+  {
+    "qihao": 98,
+    "red1": 6,
+    "red2": 10,
+    "red3": 11,
+    "red4": 20,
+    "red5": 29,
+    "red6": 32,
+    "blue": 13
+  },
+  {
+    "qihao": 99,
+    "red1": 3,
+    "red2": 7,
+    "red3": 8,
+    "red4": 14,
     "red5": 25,
     "red6": 32,
-    "blue": 7
+    "blue": 6
+  },
+  {
+    "qihao": 100,
+    "red1": 2,
+    "red2": 11,
+    "red3": 14,
+    "red4": 15,
+    "red5": 29,
+    "red6": 33,
+    "blue": 2
+  },
+  {
+    "qihao": 101,
+    "red1": 1,
+    "red2": 3,
+    "red3": 14,
+    "red4": 26,
+    "red5": 29,
+    "red6": 33,
+    "blue": 9
+  },
+  {
+    "qihao": 102,
+    "red1": 2,
+    "red2": 6,
+    "red3": 11,
+    "red4": 19,
+    "red5": 21,
+    "red6": 28,
+    "blue": 5
+  },
+  {
+    "qihao": 103,
+    "red1": 2,
+    "red2": 9,
+    "red3": 15,
+    "red4": 22,
+    "red5": 23,
+    "red6": 24,
+    "blue": 16
+  },
+  {
+    "qihao": 104,
+    "red1": 2,
+    "red2": 3,
+    "red3": 6,
+    "red4": 19,
+    "red5": 25,
+    "red6": 29,
+    "blue": 1
+  },
+  {
+    "qihao": 105,
+    "red1": 4,
+    "red2": 5,
+    "red3": 13,
+    "red4": 18,
+    "red5": 19,
+    "red6": 25,
+    "blue": 1
+  },
+  {
+    "qihao": 106,
+    "red1": 4,
+    "red2": 18,
+    "red3": 19,
+    "red4": 24,
+    "red5": 25,
+    "red6": 26,
+    "blue": 10
   }
 ]

@@ -33,10 +33,13 @@ public class ResultAdapter extends BaseMultiItemQuickAdapter<BallResultBean, Bas
                 else if (item.getQihao() < 10)
                     helper.setText(R.id.tv_qihao, "第201800" + item.getQihao() + "期");
 
-                helper.setText(R.id.tv_redHe, String.valueOf(item.getRedHe()));
-                helper.setText(R.id.tv_allHe, String.valueOf(item.getAllHe()));
-                helper.setText(R.id.tv_redPingJun, String.valueOf(item.getRedPingJun()));
-                helper.setText(R.id.tv_allPingJun, String.valueOf(item.getAllPingJun()));
+                helper.setText(R.id.tv_one, String.valueOf(item.getOne()));
+                helper.setText(R.id.tv_two, String.valueOf(item.getTwo()));
+                helper.setText(R.id.tv_three, String.valueOf(item.getThree()));
+                helper.setText(R.id.tv_four, String.valueOf(item.getFour()));
+                helper.setText(R.id.tv_five, String.valueOf(item.getFive()));
+                helper.setText(R.id.tv_six, String.valueOf(item.getSix()));
+                helper.setText(R.id.tv_seven, String.valueOf(item.getTen()));
                 break;
             case 1:
 //                if (item.getQihao() >= 100)

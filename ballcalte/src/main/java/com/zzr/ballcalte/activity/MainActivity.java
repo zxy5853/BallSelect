@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         initData();
         initAdapter();
 
@@ -240,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void refrashData(View view) {
+        RealmHelper.getInstance().delAll(BallsBean.class);
         writeDataToDB();
     }
 
